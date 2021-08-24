@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Hustle</title>
+    <link rel="stylesheet" type='text/css' href="{% static 'css/base.css' %}">
     {% block head %}
     {% endblock %}
 </head>
@@ -13,6 +16,7 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
+                <li><a href="/food">Food</a></li>
             </ul>
         </nav>
     </header>
