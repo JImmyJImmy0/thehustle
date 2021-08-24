@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/food-index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section>
+    {% for food in foods %}
+        <h2>{{ food.name }}</h2>
+    {% endfor %}
+</section>
+
+{% endblock %}
