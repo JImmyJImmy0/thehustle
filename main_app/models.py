@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Food(models.Model):
@@ -9,3 +10,9 @@ class Food(models.Model):
     sugar = models.IntegerField()
     calories = models.IntegerField()
     sodium = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('foods_index', kwargs={'food_id': self.id})

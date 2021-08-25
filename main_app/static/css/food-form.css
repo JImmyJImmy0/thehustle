@@ -1,0 +1,9 @@
+.page-header {
+    display: flex;
+}
+
+.form-container {
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+}
