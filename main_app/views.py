@@ -20,6 +20,11 @@ def exercises_index(request):
     exercises = Exercise.objects.all()
     return render(request, 'exercises/index.html', { 'exercises': exercises })
 
+def exercise_log(request):
+    exercises = Exercise.objects.all()
+    return render(request, 'exercises/log.html', { 'exercises': exercises })
+
+
 class FoodCreate(CreateView):
     model = Food
     fields = '__all__'
