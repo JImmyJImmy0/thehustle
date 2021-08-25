@@ -14,5 +14,5 @@ class Food(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return reverse('foods_index', kwargs={'food_id': self.id})
+    # def get_absolute_url(self):
+    #     return reverse('foods_index', kwargs={'food_id': self.id})

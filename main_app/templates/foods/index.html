@@ -23,8 +23,8 @@
         <div class='foods-list'>
             {% for food in foods %}
                 <h2>{{ food.name }}, {{ food.calories }} cals</h2>
+                <a href="{% url 'foods_delete' food.id %}" class='delete-btn'>Delete</a>
             {% endfor %}
-            <a href="{% url 'food_delete' food.id %}" class='delete-btn'>Delete</a>
         </div>
     </div>
 </section>
