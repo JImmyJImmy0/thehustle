@@ -2,10 +2,25 @@
 {% load static %}
 
 {% block head %}
+<link rel="stylesheet" href="{% static 'css/food-log.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<h1>working</h1>
+<section class='meals-container'>
+    <h1>Your Meals</h1>
+    <div class='breakfast'>
+        breakfast
+    </div>
+    <div class='lunch'>
+        lunch
+    </div>
+    <div class='dinner'>
+        dinner
+    </div>
+    <div class='snacks'>
+        snacks
+    </div>
+</section>
 
 {% endblock %}
