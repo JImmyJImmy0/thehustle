@@ -32,3 +32,4 @@ class FoodDelete(DeleteView):
 class ExerciseCreate(CreateView):
     model = Exercise
     fields = '__all__'
+    success_url = '/exercise/'
