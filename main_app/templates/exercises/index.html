@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/exercise-index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class='exercise-container'>
+    <div class='header'>
+        <h1>Your Exercises</h1>
+    </div>
+    <div class='exercise-list'>
+        {% for exercice in exercises %}
+            <h3>{{ exercise.name }}</h3>
+        {% endfor %}
+    </div>
+    <div class='exercise-form'>
+        <h2>Add an Exercise</h2>
+        <button>yo</button>
+    </div>
+</section>
+
+{% endblock %}

@@ -16,9 +16,9 @@ def food_log(request):
     foods = Food.objects.all()
     return render(request, 'foods/log.html', { 'foods': foods })
 
-def exercise_index(request):
-    exercise = Exercise.objects.all()
-    return render(request, 'exercises/index.html', { 'exercise': exercise })
+def exercises_index(request):
+    exercises = Exercise.objects.all()
+    return render(request, 'exercises/index.html', { 'exercises': exercises })
 
 class FoodCreate(CreateView):
     model = Food
