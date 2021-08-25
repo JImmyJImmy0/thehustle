@@ -24,6 +24,7 @@
             {% for food in foods %}
                 <h2>{{ food.name }}, {{ food.calories }} cals</h2>
             {% endfor %}
+            <a href="{% url 'food_delete' food.id %}" class='delete-btn'>Delete</a>
         </div>
     </div>
 </section>

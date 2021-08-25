@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 from .models import Food
 
 
@@ -15,4 +15,8 @@ def foods_index(request):
 class FoodCreate(CreateView):
     model = Food
     fields = '__all__'
+    success_url = '/food/'
+
+class FoodDelete(DeleteView):
+    model = Food
     success_url = '/food/'
