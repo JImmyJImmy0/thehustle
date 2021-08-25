@@ -4,12 +4,12 @@ from django.urls import reverse
 # Create your models here.
 class Food(models.Model):
     name = models.CharField(max_length=100)
-    protein = models.IntegerField()
-    carbs = models.IntegerField()
-    fat = models.IntegerField()
-    sugar = models.IntegerField()
+    protein = models.IntegerField('Protein in grams')
+    carbs = models.IntegerField('Carbs in grams')
+    fat = models.IntegerField('Fat in grams')
+    sugar = models.IntegerField('Sugar in grams')
     calories = models.IntegerField()
-    sodium = models.IntegerField()
+    sodium = models.IntegerField('Sodium in milligrams')
 
     def __str__(self):
         return self.name
