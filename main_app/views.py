@@ -33,3 +33,7 @@ class ExerciseCreate(CreateView):
     model = Exercise
     fields = '__all__'
     success_url = '/exercise/'
+
+class ExerciseDelete(DeleteView):
+    model = Exercise
+    success_url = '/exercise/'

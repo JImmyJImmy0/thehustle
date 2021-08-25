@@ -8,5 +8,6 @@ urlpatterns = [
     path('food/create/', views.FoodCreate.as_view(), name='foods_create'),
     path('food/<int:pk>/delete/', views.FoodDelete.as_view(), name='foods_delete'),
     path('exercise/', views.exercises_index, name='exercises_index'),
-    path('exercise/create/', views.ExerciseCreate.as_view(), name='exercises_create')
+    path('exercise/create/', views.ExerciseCreate.as_view(), name='exercises_create'),
+    path('exercise/<int:pk>/delete', views.ExerciseDelete.as_view(), name='exercises_delete')
 ]
