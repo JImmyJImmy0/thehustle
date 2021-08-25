@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Food
 
 
@@ -10,3 +11,8 @@ def home(request):
 def foods_index(request):
     foods = Food.objects.all()
     return render(request, 'foods/index.html', { 'foods': foods })
+
+class FoodCreate(CreateView):
+    model = Food
+    fields = '__all__'
+    success_url = '/food/'

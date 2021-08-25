@@ -9,13 +9,17 @@
 
 <section class='food-form'>
     <div class='form-container'>
-        <h1>hi</h1>
+        <h1>Add a Food</h1>
+    </div>
+    <div class='add-food-btn'>
+        <a href="{% url 'foods_create' %}">Click to add a food</a>
     </div>
 </section>
 
 
 <section class='all-foods'>
     <div class='food-container'>
+        <h1>Your Foods</h1>
         <div class='foods-list'>
             {% for food in foods %}
                 <h2>{{ food.name }}, {{ food.calories }} cals</h2>
