@@ -12,6 +12,10 @@ def foods_index(request):
     foods = Food.objects.all()
     return render(request, 'foods/index.html', { 'foods': foods })
 
+def food_log(request):
+    foods = Food.objects.all()
+    return render(request, 'foods/log.html', {'foods': foods})
+
 class FoodCreate(CreateView):
     model = Food
     fields = '__all__'
