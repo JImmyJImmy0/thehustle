@@ -28,3 +28,7 @@ class FoodCreate(CreateView):
 class FoodDelete(DeleteView):
     model = Food
     success_url = '/food/'
+
+class ExerciseCreate(CreateView):
+    model = Exercise
+    fields = '__all__'
