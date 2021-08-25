@@ -21,7 +21,7 @@ class Food(models.Model):
 class Exercise(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
-    duration = models.IntegerField()
+    duration = models.IntegerField('Duration in minutes')
     calories_burned = models.IntegerField()
 
     def __str__(self):
