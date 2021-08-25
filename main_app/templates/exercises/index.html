@@ -14,6 +14,7 @@
     <div class='exercise-list'>
         {% for exercise in exercises %}
             <h3>{{ exercise.name }}, {{ exercise.calories_burned }} cals burned</h3>
+            <a href="{% url 'exercises_delete' exercise.id %}" class='delete-btn'>Delete</a>
         {% endfor %}
     </div>
 </section>
