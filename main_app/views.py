@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView
-from .models import Food
+from .models import Exercise, Food
 
 
 # Create your views here.
@@ -14,7 +14,11 @@ def foods_index(request):
 
 def food_log(request):
     foods = Food.objects.all()
-    return render(request, 'foods/log.html', {'foods': foods})
+    return render(request, 'foods/log.html', { 'foods': foods })
+
+def exercise_index(request):
+    exercise = Exercise.objects.all()
+    return render(request, 'exercises/index.html', { 'exercise': exercise })
 
 class FoodCreate(CreateView):
     model = Food
