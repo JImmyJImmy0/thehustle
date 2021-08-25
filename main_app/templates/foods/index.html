@@ -2,15 +2,26 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/food-index.css' %}">
+<link rel="stylesheet" type='text/css' href="{% static 'css/food-index.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<section>
-    {% for food in foods %}
-        <h2>{{ food.name }}</h2>
-    {% endfor %}
+<section class='food-form'>
+    <div class='form-container'>
+        <h1>hi</h1>
+    </div>
+</section>
+
+
+<section class='all-foods'>
+    <div class='food-container'>
+        <div class='foods-list'>
+            {% for food in foods %}
+                <h2>{{ food.name }}, {{ food.calories }} cals</h2>
+            {% endfor %}
+        </div>
+    </div>
 </section>
 
 {% endblock %}

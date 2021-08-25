@@ -1,0 +1,21 @@
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+.food-form {
+    width: 50vw;
+    height: 100vh;
+    text-align: center;
+    
+}
+
+.all-foods {
+    width: 50vw;
+    height: 100vh;
+    
+}
+
+.food-container {
+    text-align: center;
+}

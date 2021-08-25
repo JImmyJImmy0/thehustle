@@ -8,3 +8,48 @@ body {
       sans-serif;
     min-height: 100vh;
   }
+
+  header {
+    width: 100%;
+    background: rgba(104, 197, 248, .9);
+    border-bottom: rgb(36, 116, 248) solid 2px;
+  }
+
+  nav {
+    margin: 0 10px 10px;
+  }
+
+  ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+  }
+
+  main {
+    width: calc(100vw - 20px);
+  }
+
+  /* nav a {
+    text-decoration: none;
+    color: #101010;
+    font-weight: 600;
+  } */
+
+  nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  nav li {
+    padding: 5px 8px;
+  }
+
+  .home-link {
+    margin: auto;
+    padding: 10px 10px;
+    align-self: center;
+    text-align: center;
+    max-width: 500px;
+  }
