@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView, DeleteView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from .forms import ProfileForm
 from .models import Exercise, Food
 
@@ -12,19 +13,25 @@ from .models import Exercise, Food
 class Home(LoginView):
     template_name = 'home.html'
 
-
+@login_required
 def foods_index(request):
     foods = Food.objects.filter(user=request.user)
     return render(request, 'foods/index.html', { 'foods': foods })
 
+
+@login_required
 def food_log(request):
     foods = Food.objects.filter(user=request.user)
     return render(request, 'foods/log.html', { 'foods': foods })
 
+
+@login_required
 def exercises_index(request):
     exercises = Exercise.objects.filter(user=request.user)
     return render(request, 'exercises/index.html', { 'exercises': exercises })
 
+
+@login_required
 def exercise_log(request):
     exercises = Exercise.objects.filter(user=request.user)
     return render(request, 'exercises/log.html', { 'exercises': exercises })
