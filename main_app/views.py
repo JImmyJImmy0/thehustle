@@ -35,6 +35,10 @@ class FoodCreate(CreateView):
     fields = '__all__'
     success_url = '/food/'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 class FoodDelete(DeleteView):
     model = Food
     success_url = '/food/'
