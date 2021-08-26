@@ -14,19 +14,19 @@ class Home(LoginView):
 
 
 def foods_index(request):
-    foods = Food.objects.all()
+    foods = Food.objects.filter(user=request.user)
     return render(request, 'foods/index.html', { 'foods': foods })
 
 def food_log(request):
-    foods = Food.objects.all()
+    foods = Food.objects.filter(user=request.user)
     return render(request, 'foods/log.html', { 'foods': foods })
 
 def exercises_index(request):
-    exercises = Exercise.objects.all()
+    exercises = Exercise.objects.filter(user=request.user)
     return render(request, 'exercises/index.html', { 'exercises': exercises })
 
 def exercise_log(request):
-    exercises = Exercise.objects.all()
+    exercises = Exercise.objects.filter(user=request.user)
     return render(request, 'exercises/log.html', { 'exercises': exercises })
 
 
