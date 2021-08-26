@@ -45,8 +45,12 @@ class FoodDelete(DeleteView):
 
 class ExerciseCreate(CreateView):
     model = Exercise
-    fields = '__all__'
+    fields = ['name', 'description', 'duration', 'calories_burned']
     success_url = '/exercise/'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class ExerciseDelete(DeleteView):
     model = Exercise
