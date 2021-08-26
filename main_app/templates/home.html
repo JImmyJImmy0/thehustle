@@ -9,4 +9,14 @@
 
 <h1>The Hustle</h1>
 
+<section>
+    <form action="{% url 'home' %}" method="post" class='login'>
+        <h1>Login</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name='next' value='{{ next }}'>
+        <button type='submit' class='submit-btn'>Login</button>
+    </form>
+</section>
+
 {% endblock %}
