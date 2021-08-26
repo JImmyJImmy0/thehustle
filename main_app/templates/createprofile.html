@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/createprofile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class='page-header'>
+    <h1>Create Your Profile</h1>
+</div>
+{% if error_message %}
+    <p class='error_message'>{{ error_message }}</p>
+{% endif %}
+<form action="" method='post' class='form-container' autocomplete='off'>
+    {% csrf_token %}
+    <table>
+        {{ profile_form.as_table }}
+    </table>
+    <button type='submit' class='submit-btn'>Submit</button>
+</form>
+
+
+{% endblock %}
