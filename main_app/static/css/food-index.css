@@ -3,6 +3,10 @@ main {
     flex-direction: row;
 }
 
+h3 {
+    margin-bottom: 5px;
+}
+
 .food-form {
     width: 50vw;
     height: 100vh;
@@ -19,3 +23,18 @@ main {
 .food-container {
     text-align: center;
 }
+
+.test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+th, td {
+    padding: 3px;
+}
+
+.delete-btn {
+    margin-top: 5px;
+}
+
