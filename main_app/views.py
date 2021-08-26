@@ -55,10 +55,24 @@ def signup(request):
         if user_form.is_valid():
             user = user_form.save()
             login(request, user)
-            return redirect('foods_index')
         else:
             error_message = 'Invalid sign up - try again'
 
     user_form = UserCreationForm()
     context = {'user_form': user_form, 'error_message': error_message}
     return render(request, 'signup.html', context)
+
+
+def createprofile(request):
+    error_message = ''
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST)
+        if profile_form.is_valid():
+            profile = profile_form.save()
+            return redirect('foods_index')
+        else:
+            error_message = 'Invalid - try again'
+
+    profile_form = ProfileForm()
+    context = {'profile_form': profile_form, 'error_message': error_message}
+    return render(request, 'createprofile.html', context)
