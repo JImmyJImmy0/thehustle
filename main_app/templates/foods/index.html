@@ -22,7 +22,29 @@
         <h1>Your Foods</h1>
         <div class='foods-list'>
             {% for food in foods %}
-                <h2>{{ food.name }}, {{ food.calories }} cals</h2>
+                <h3>{{ food.name }}</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Calories</th>
+                            <th>Protein</th>
+                            <th>Carbs</th>
+                            <th>Fat</th>
+                            <th>Sugar</th>
+                            <th>Sodium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ food.calories }}</td>
+                            <td>{{ food.protein }}g</td>
+                            <td>{{ food.carbs }}g</td>
+                            <td>{{ food.fat }}g</td>
+                            <td>{{ food.sugar }}g</td>
+                            <td>{{ food.sodium }}mg</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <a href="{% url 'foods_delete' food.id %}" class='delete-btn'>Delete</a>
             {% endfor %}
         </div>
