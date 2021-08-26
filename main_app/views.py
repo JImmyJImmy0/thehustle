@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView
-from .models import Exercise, Food
+from django.contrib.auth.views import LoginView
+from .models import Exercise, Food, Profile
 
 
 # Create your views here.
-def home(request):
-    return render(request, 'home.html')
+class Home(LoginView):
+    template_name = 'home.html'
 
 
 def foods_index(request):
