@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView, DeleteView
 from django.contrib.auth.views import LoginView
@@ -55,6 +56,7 @@ def signup(request):
         if user_form.is_valid():
             user = user_form.save()
             login(request, user)
+            return redirect('createprofile')
         else:
             error_message = 'Invalid sign up - try again'
 
@@ -68,7 +70,7 @@ def createprofile(request):
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST)
         if profile_form.is_valid():
-            profile = profile_form.save()
+            profile_form.save()
             return redirect('foods_index')
         else:
             error_message = 'Invalid - try again'
