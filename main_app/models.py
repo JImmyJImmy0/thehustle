@@ -19,7 +19,7 @@ class Food(models.Model):
     sugar = models.IntegerField('Sugar in grams')
     calories = models.IntegerField()
     sodium = models.IntegerField('Sodium in milligrams')
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -33,7 +33,7 @@ class Exercise(models.Model):
     description = models.CharField(max_length=250)
     duration = models.IntegerField('Duration in minutes')
     calories_burned = models.IntegerField()
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

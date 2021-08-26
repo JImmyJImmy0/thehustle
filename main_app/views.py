@@ -32,7 +32,7 @@ def exercise_log(request):
 
 class FoodCreate(CreateView):
     model = Food
-    fields = '__all__'
+    fields = ['name', 'calories', 'protein', 'carbs', 'fat', 'sugar', 'sodium']
     success_url = '/food/'
 
     def form_valid(self, form):
