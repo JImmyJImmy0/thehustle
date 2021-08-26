@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView, DeleteView
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from .models import Exercise, Food, Profile
 
 
@@ -43,3 +45,20 @@ class ExerciseCreate(CreateView):
 class ExerciseDelete(DeleteView):
     model = Exercise
     success_url = '/exercise/'
+
+
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            Profile(user_id = user.id).save()
+            login(request, user)
+            return redirect('foods_index')
+        else:
+            error_message = 'Invalid sign up - try again'
+
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'signup.html', context)
