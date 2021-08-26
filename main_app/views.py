@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ProfileForm
 from .models import Exercise, Food
 
@@ -37,7 +38,7 @@ def exercise_log(request):
     return render(request, 'exercises/log.html', { 'exercises': exercises })
 
 
-class FoodCreate(CreateView):
+class FoodCreate(LoginRequiredMixin, CreateView):
     model = Food
     fields = ['name', 'calories', 'protein', 'carbs', 'fat', 'sugar', 'sodium']
     success_url = '/food/'
@@ -46,11 +47,13 @@ class FoodCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class FoodDelete(DeleteView):
+
+class FoodDelete(LoginRequiredMixin, DeleteView):
     model = Food
     success_url = '/food/'
 
-class ExerciseCreate(CreateView):
+
+class ExerciseCreate(LoginRequiredMixin, CreateView):
     model = Exercise
     fields = ['name', 'description', 'duration', 'calories_burned']
     success_url = '/exercise/'
@@ -59,7 +62,8 @@ class ExerciseCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class ExerciseDelete(DeleteView):
+
+class ExerciseDelete(LoginRequiredMixin, DeleteView):
     model = Exercise
     success_url = '/exercise/'
 
