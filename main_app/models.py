@@ -1,7 +1,14 @@
+from os import name
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 
+TYPES = (
+    ('B', 'Breakfast'),
+    ('L', 'Lunch'),
+    ('D', 'Dinner')
+)
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -23,6 +30,21 @@ class Food(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Meal(models.Model):
+    name = models.CharField(
+        max_length=1,
+        choices=TYPES,
+        default=TYPES[0][0]
+    )
+    date = models.DateField()
+    foods = models.ManyToManyField(Food)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
 
 
 class Exercise(models.Model):
