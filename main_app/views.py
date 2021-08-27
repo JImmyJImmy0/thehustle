@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ProfileForm
-from .models import Exercise, Food
+from .models import Exercise, Food, Meal
 
 
 
@@ -38,6 +38,10 @@ def exercise_log(request):
     exercises = Exercise.objects.filter(user=request.user)
     return render(request, 'exercises/log.html', { 'exercises': exercises })
 
+class BreakfastCreate(LoginRequiredMixin, CreateView):
+    model: Meal
+    fields = ['name', 'date']
+    success_url = '/foodlog/'     # sub to change for a reverse in model
 
 class FoodCreate(LoginRequiredMixin, CreateView):
     model = Food
