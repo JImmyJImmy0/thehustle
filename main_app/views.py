@@ -48,13 +48,12 @@ def breakfast_details(request, meal_id):
 class BreakfastCreate(LoginRequiredMixin, CreateView):
     model = Meal
     fields = ['name', 'date']
-    success_url = '/foodlog/'     # sub to change for a reverse in model
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-    
+
 
 class FoodCreate(LoginRequiredMixin, CreateView):
     model = Food
