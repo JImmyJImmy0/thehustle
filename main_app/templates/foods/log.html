@@ -10,132 +10,21 @@
 <section class='meals-container'>
     <h1>Your Meals</h1>
 
-    <div>
-        {{ full_dict }}
-    </div>
-
     <div class='breakfast'>
-        breakfast
-        <a href="{% url 'foods_index' %}">Add Food</a>
-        <div class='b-table'>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Calories</th>
-                        <th>Protein</th>
-                        <th>Carbs</th>
-                        <th>Fat</th>
-                        <th>Sugar</th>
-                        <th>Sodium</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>name</td>
-                        <td>cals</td>
-                        <td>pro</td>
-                        <td>carbs</td>
-                        <td>fat</td>
-                        <td>sugar</td>
-                        <td>sodium</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <h1>Breakfast</h1>
+        <h3>Add a new breakfast meal</h3>
+        <a href="{% url 'breakfast_create' %}">Add</a>
     </div>
     <div class='lunch'>
-        lunch
-        <a href="{% url 'foods_index' %}">Add Food</a>
-        <div class='l-table'>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Calories</th>
-                        <th>Protein</th>
-                        <th>Carbs</th>
-                        <th>Fat</th>
-                        <th>Sugar</th>
-                        <th>Sodium</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>name</td>
-                        <td>cals</td>
-                        <td>pro</td>
-                        <td>carbs</td>
-                        <td>fat</td>
-                        <td>sugar</td>
-                        <td>sodium</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <h1>Lunch</h1>
+        <a href="{% url 'foods_index' %}">Add Food</a>           
     </div>
     <div class='dinner'>
-        dinner
+        <h1>Dinner</h1>
         <a href="{% url 'foods_index' %}">Add Food</a>
-        <div class='d-table'>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Calories</th>
-                        <th>Protein</th>
-                        <th>Carbs</th>
-                        <th>Fat</th>
-                        <th>Sugar</th>
-                        <th>Sodium</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>name</td>
-                        <td>cals</td>
-                        <td>pro</td>
-                        <td>carbs</td>
-                        <td>fat</td>
-                        <td>sugar</td>
-                        <td>sodium</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class='snacks'>
-        snacks
-        <a href="{% url 'foods_index' %}">Add Food</a>
-        <div class='s-table'>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Calories</th>
-                        <th>Protein</th>
-                        <th>Carbs</th>
-                        <th>Fat</th>
-                        <th>Sugar</th>
-                        <th>Sodium</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>name</td>
-                        <td>cals</td>
-                        <td>pro</td>
-                        <td>carbs</td>
-                        <td>fat</td>
-                        <td>sugar</td>
-                        <td>sodium</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
     <div class='macro-total'>
-        macro total
+        <h1>Total Macros</h1>
         <div class='total-table'>
             <table>
                 <thead>

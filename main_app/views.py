@@ -38,10 +38,23 @@ def exercise_log(request):
     exercises = Exercise.objects.filter(user=request.user)
     return render(request, 'exercises/log.html', { 'exercises': exercises })
 
+
+@login_required
+def breakfast_details(request, meal_id):
+    meal = Meal.objects.get(id=meal_id)
+    # add a food?
+    return render(request, 'meals/breakfast_details.html', {'meal': meal}) # foods ? look at dogcollector
+
 class BreakfastCreate(LoginRequiredMixin, CreateView):
-    model: Meal
+    model = Meal
     fields = ['name', 'date']
     success_url = '/foodlog/'     # sub to change for a reverse in model
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    
 
 class FoodCreate(LoginRequiredMixin, CreateView):
     model = Food
