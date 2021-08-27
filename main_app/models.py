@@ -1,7 +1,8 @@
 from django.db import models
-from django.urls import reverse
 from django.contrib.auth.models import User
 
+
+# Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     age = models.IntegerField()
@@ -10,7 +11,6 @@ class Profile(models.Model):
     goal_weight = models.IntegerField('Goal weight in lbs')
 
 
-# Create your models here.
 class Food(models.Model):
     name = models.CharField(max_length=100)
     protein = models.IntegerField('Protein in grams')
@@ -23,9 +23,6 @@ class Food(models.Model):
 
     def __str__(self):
         return self.name
-
-    # def get_absolute_url(self):
-    #     return reverse('foods_index', kwargs={'food_id': self.id})
 
 
 class Exercise(models.Model):

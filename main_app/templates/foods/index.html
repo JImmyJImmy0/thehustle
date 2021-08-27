@@ -47,6 +47,8 @@
                         </tbody>
                     </table>
                     <a href="{% url 'foods_delete' food.id %}" class='delete-btn'>Delete</a>
+                    {% comment %} <a href="{% url 'model_to_dict' %}">Add</a> {% endcomment %}
+                    <a href="{% url 'create_dict' %}">Add</a>
                 </div>
             {% endfor %}
         </div>

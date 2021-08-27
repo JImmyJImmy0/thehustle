@@ -9,6 +9,11 @@
 
 <section class='meals-container'>
     <h1>Your Meals</h1>
+
+    <div>
+        {{ full_dict }}
+    </div>
+
     <div class='breakfast'>
         breakfast
         <a href="{% url 'foods_index' %}">Add Food</a>
@@ -27,7 +32,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>name</td>
+                        <td>{{ food.name }}</td>
                         <td>cals</td>
                         <td>pro</td>
                         <td>carbs</td>

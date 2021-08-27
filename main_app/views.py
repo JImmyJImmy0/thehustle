@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView, DeleteView
 from django.contrib.auth.views import LoginView
@@ -6,8 +5,11 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.forms.models import model_to_dict
 from .forms import ProfileForm
 from .models import Exercise, Food
+from itertools import chain
+
 
 
 # Create your views here.
@@ -97,3 +99,48 @@ def createprofile(request):
     profile_form = ProfileForm()
     context = {'profile_form': profile_form, 'error_message': error_message}
     return render(request, 'createprofile.html', context)
+
+list_of_items = []
+full_dict = {}
+def create_dict(request):
+    foods = Food.objects.filter(user=request.user)
+    item_dict = {}
+    item_dict['name'] = foods.name
+    item_dict['protein'] = foods.protein
+    item_dict['carbs'] = foods.carbs
+    item_dict['fat'] = foods.fat
+    item_dict['sugar'] = foods.sugar
+    item_dict['calories'] = foods.calories
+    item_dict['sodium'] = foods.sodium
+
+    list_of_items.append(item_dict)
+    
+    for i in range(len(list_of_items)):
+        full_dict[i] = list_of_items[i]
+    return render(request, 'foods/log.html', {'full_dict': full_dict})
+
+
+
+# food_list = []
+# dict_of_dicts = {}
+# def model_to_dict(instance):
+#     opts = instance._meta
+#     data = {}
+#     for f in chain(opts.concrete_fields, opts.private_fields, opts.many_to_many):
+#         if not getattr(f, 'editable', False):
+#             continue
+#         data[f.name] = f.value_from_object(instance)
+#     food_list.append(data)
+
+#     for i in range(len(food_list)):
+#         dict_of_dicts[i] = food_list[i]
+#     return dict_of_dicts
+    
+
+
+
+# dict_of_dicts = {}
+# def add_to(food_list):
+#     for i in range(len(food_list)):
+#         dict_of_dicts[i] = food_list[i]
+#     return dict_of_dicts
