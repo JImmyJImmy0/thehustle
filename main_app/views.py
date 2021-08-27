@@ -42,8 +42,10 @@ def exercise_log(request):
 @login_required
 def breakfast_details(request, meal_id):
     meal = Meal.objects.get(id=meal_id)
+    unadded_foods = Food.objects.exclude(id__in = meal.foods.all().values_list('id'))
+    # foods = Food.objects.filter(user=request.user)
     # add a food?
-    return render(request, 'meals/breakfast_details.html', {'meal': meal}) # foods ? look at dogcollector
+    return render(request, 'meals/breakfast_details.html', {'meal': meal, 'foods': unadded_foods}) # foods ? look at dogcollector
 
 class BreakfastCreate(LoginRequiredMixin, CreateView):
     model = Meal

@@ -1,7 +1,44 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/meal-details.css' %}">
+{% endblock %}
+
 
 {% block content %}
-    <h1>working</h1>
+    
+<div class='page-header'>
+    <h1>{{ meal.get_name_display }} on {{ meal.date }}</h1>
+</div>
+
+<section>
+    <h2>food</h2>
+    <div>
+        {% if meal.foods.count %}
+            {% for food in meal.foods.all %}
+                <div>
+                    <p>{{ food.name }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No foods have been added yet</p>
+        {% endif %}
+    </div>
+
+
+    <div>
+        <h1>All foods</h1>
+        {% if foods.count %}
+            {% for food in foods.all %}
+                <div>
+                    <p>{{ food.name }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>All foods added</p>
+        {% endif %}
+    </div>
+</section>
+
 {% endblock %}
