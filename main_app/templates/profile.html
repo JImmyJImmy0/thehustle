@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="header">
+    <h1>Hey there, {{ user.username }}</h1>
+</div>
+
+<section>
+    <div class="info">
+        <h1>Here is your current information</h1>
+        <h3>Age: {{ user.profile.age }}</h3>
+        <h3>Height: {{ user.profile.height }}</h3>
+        <h3>Weight: {{ user.profile.weight }}</h3>
+        <h3>Goal Weight: {{ user.profile.goal_weight }}</h3>
+    </div>
+    <div class="change-info">
+        <h1>Update you current information here</h1>
+    </div>
+</section>
+{% endblock %}
