@@ -48,6 +48,30 @@ class Meal(models.Model):
 
     def get_absolute_url(self):
         return reverse('breakfast_details', kwargs={'meal_id': self.id})
+
+    @property
+    def get_total_calories(self):
+        return sum([food.calories for food in self.foods.all()])
+
+    @property
+    def get_total_protein(self):
+        return sum([food.protein for food in self.foods.all()])
+
+    @property
+    def get_total_carbs(self):
+        return sum([food.carbs for food in self.foods.all()])
+
+    @property
+    def get_total_fat(self):
+        return sum([food.fat for food in self.foods.all()])
+
+    @property
+    def get_total_sugar(self):
+        return sum([food.sugar for food in self.foods.all()])
+
+    @property
+    def get_total_sodium(self):
+        return sum([food.sodium for food in self.foods.all()])
     
 
 

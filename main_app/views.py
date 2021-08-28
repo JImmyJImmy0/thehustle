@@ -1,3 +1,4 @@
+from django.db.models import query
 from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView, DeleteView
 from django.contrib.auth.views import LoginView
@@ -42,8 +43,9 @@ def exercise_log(request):
 @login_required
 def breakfast_details(request, meal_id):
     meal = Meal.objects.get(id=meal_id)
+    # queryset = meal.foods.aggregate(Sum('calories'))
     unadded_foods = Food.objects.exclude(id__in = meal.foods.all().values_list('id'))
-    return render(request, 'meals/breakfast_details.html', {'meal': meal, 'foods': unadded_foods}) # foods ? look at dogcollector
+    return render(request, 'meals/breakfast_details.html', {'meal': meal, 'foods': unadded_foods})
 
 class BreakfastCreate(LoginRequiredMixin, CreateView):
     model = Meal

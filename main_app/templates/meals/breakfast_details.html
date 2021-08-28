@@ -17,16 +17,40 @@
     <div>
         {% if meal.foods.count %}
             {% for food in meal.foods.all %}
-                <div>
-                    <p>{{ food.name }}</p>
+                <div class='table-container'>
+                    <table class='food-table'>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Calories</th>
+                                <th>Protein</th>
+                                <th>Carbs</th>
+                                <th>Fat</th>
+                                <th>Sugar</th>
+                                <th>Sodium</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ food.name }}</td>
+                                <td>{{ food.calories }}cals</td>
+                                <td>{{ food.protein }}g</td>
+                                <td>{{ food.carbs }}g</td>
+                                <td>{{ food.fat }}g</td>
+                                <td>{{ food.sugar }}g</td>
+                                <td>{{ food.sodium }}mg</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             {% endfor %}
         {% else %}
             <p>No foods have been added yet</p>
         {% endif %}
     </div>
+</section>
 
-
+<section>
     <div>
         <h1>All foods</h1>
         {% if foods.count %}
@@ -42,6 +66,34 @@
         {% else %}
             <p>All foods added</p>
         {% endif %}
+    </div>
+</section>
+
+<section>
+    <h2>Total Macros</h2>
+    <div class='macro-container'>
+        <table class='macro-totals'>
+            <thead>
+                <tr>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                    <th>Carbs</th>
+                    <th>Fat</th>
+                    <th>Sugar</th>
+                    <th>Sodium</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ meal.get_total_calories }}cals</td>
+                    <td>{{ meal.get_total_protein }}g</td>
+                    <td>{{ meal.get_total_carbs }}g</td>
+                    <td>{{ meal.get_total_fat }}g</td>
+                    <td>{{ meal.get_total_sugar }}g</td>
+                    <td>{{ meal.get_total_sodium }}mg</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
