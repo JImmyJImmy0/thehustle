@@ -41,20 +41,19 @@ def exercise_log(request):
 
 
 @login_required
-def breakfast_details(request, meal_id):
+def meal_details(request, meal_id):
     meal = Meal.objects.get(id=meal_id)
-    # queryset = meal.foods.aggregate(Sum('calories'))
     unadded_foods = Food.objects.exclude(id__in = meal.foods.all().values_list('id'))
-    return render(request, 'meals/breakfast_details.html', {'meal': meal, 'foods': unadded_foods})
+    return render(request, 'meals/meal_details.html', {'meal': meal, 'foods': unadded_foods})
 
-class BreakfastCreate(LoginRequiredMixin, CreateView):
+
+class MealCreate(LoginRequiredMixin, CreateView):
     model = Meal
     fields = ['name', 'date']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-
 
 
 class FoodCreate(LoginRequiredMixin, CreateView):
@@ -90,7 +89,7 @@ class ExerciseDelete(LoginRequiredMixin, DeleteView):
 @login_required
 def assoc_food(request,  meal_id, food_id):
     Meal.objects.get(id=meal_id).foods.add(food_id)
-    return redirect('breakfast_details', meal_id=meal_id)
+    return redirect('meal_details', meal_id=meal_id)
 
 def signup(request):
     error_message = ''

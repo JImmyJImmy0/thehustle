@@ -47,7 +47,7 @@ class Meal(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('breakfast_details', kwargs={'meal_id': self.id})
+        return reverse('meal_details', kwargs={'meal_id': self.id})
 
     @property
     def get_total_calories(self):
