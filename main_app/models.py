@@ -50,6 +50,9 @@ class Meal(models.Model):
     def get_absolute_url(self):
         return reverse('meal_details', kwargs={'meal_id': self.id})
 
+    # def lunch_count(self):
+    #     return self.lunch_set.filter(name=TYPES[1][0]).count()
+
     @property
     def get_total_calories(self):
         return sum([food.calories for food in self.foods.all()])

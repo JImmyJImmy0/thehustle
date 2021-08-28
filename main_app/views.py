@@ -1,3 +1,4 @@
+from os import error
 from django.db.models import query
 from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView, DeleteView
@@ -6,7 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import ProfileForm
+from .forms import ProfileForm, UpdateProfileForm
 from .models import Exercise, Food, Meal, Profile
 
 
@@ -32,7 +33,8 @@ def foods_index(request):
 @login_required
 def food_log(request):
     foods = Food.objects.filter(user=request.user)
-    return render(request, 'foods/log.html', { 'foods': foods })
+    meals = Meal.objects.filter(user=request.user)
+    return render(request, 'foods/log.html', { 'foods': foods, 'meals': meals })
 
 
 @login_required
@@ -119,7 +121,8 @@ def createprofile(request):
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST)
         if profile_form.is_valid():
-            profile_form.save()
+            user_profile = profile_form.save()
+            Profile(user_id = user_profile.id).save()
             return redirect('foods_index')
         else:
             error_message = 'Invalid - try again'
@@ -127,4 +130,19 @@ def createprofile(request):
     profile_form = ProfileForm()
     context = {'profile_form': profile_form, 'error_message': error_message}
     return render(request, 'createprofile.html', context)
+
+
+def updateprofile(request):
+    error_message = ''
+    if request.method == 'POST':
+        update_profile_form = UpdateProfileForm(request.POST)
+        if update_profile_form.is_valid():
+            update_profile_form.save()
+            return redirect('profile')
+        else:
+            error_message = 'Invalid - try again'
+
+    update_profile_form = UpdateProfileForm()
+    context = {'update_profile_form': update_profile_form, 'error_message': error_message}
+    return render(request, 'updateprofile.html', context)
 

@@ -15,14 +15,38 @@
         <a href=""></a>
         <h3>Add a new breakfast meal</h3>
         <a href="{% url 'meal_create' %}">Add</a>
+        <div>
+            {% for meal in meals %}
+                {% if meal.name == 'B' %}
+                    <h1>{{ meal.get_name_display }} on {{ meal.date }}</h1>
+                    <a href="{% url 'meal_details' meal.id %}">View</a>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
     <div class='lunch'>
         <h1>Lunch</h1>
-        <a href="{% url 'meal_create' %}">Add</a>           
+        <a href="{% url 'meal_create' %}">Add</a>
+        <div>
+            {% for meal in meals %}
+                {% if meal.name == 'L' %}
+                    <h1>{{ meal.get_name_display }} on {{ meal.date }}</h1>
+                    <a href="{% url 'meal_details' meal.id %}">View</a>
+                {% endif %}
+            {% endfor %}
+        </div>           
     </div>
     <div class='dinner'>
         <h1>Dinner</h1>
         <a href="{% url 'meal_create' %}">Add</a>
+        <div>
+            {% for meal in meals %}
+                {% if meal.name == 'D' %}
+                    <h1>{{ meal.get_name_display }} on {{ meal.date }}</h1>
+                    <a href="{% url 'meal_details' meal.id %}">View</a>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
     <div class='macro-total'>
         <h1>Total Macros</h1>
