@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ProfileForm
-from .models import Exercise, Food, Meal
+from .models import Exercise, Food, Meal, Profile
 
 
 
@@ -15,6 +15,13 @@ from .models import Exercise, Food, Meal
 # Create your views here.
 class Home(LoginView):
     template_name = 'home.html'
+
+
+@login_required
+def profile(request):
+    profile = Profile.objects.filter(user=request.user)
+    return render(request, 'profile.html', { 'profile': profile })
+
 
 @login_required
 def foods_index(request):
