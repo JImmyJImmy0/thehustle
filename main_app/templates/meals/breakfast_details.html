@@ -33,6 +33,10 @@
             {% for food in foods.all %}
                 <div>
                     <p>{{ food.name }}</p>
+                    <form action="{% url 'assoc_food' meal.id food.id %}" method='post'>
+                        {% csrf_token %}
+                        <button type='submit'>Add to meal</button>
+                    </form>
                 </div>
             {% endfor %}
         {% else %}

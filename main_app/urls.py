@@ -15,4 +15,5 @@ urlpatterns = [
     path('accounts/createprofile/', views.createprofile, name='createprofile'),
     path('breakfast/create', views.BreakfastCreate.as_view(), name='breakfast_create'), # maybe just MealCreate for all meals
     path('breakfast/<int:meal_id>/', views.breakfast_details, name='breakfast_details'),
+    path('breakfast/<int:meal_id>/assoc_food/<int:food_id>', views.assoc_food, name='assoc_food')
 ]
