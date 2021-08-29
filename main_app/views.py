@@ -34,7 +34,8 @@ def foods_index(request):
 def food_log(request):
     foods = Food.objects.filter(user=request.user)
     meals = Meal.objects.filter(user=request.user)
-    return render(request, 'foods/log.html', { 'foods': foods, 'meals': meals })
+    profile = Profile.objects.filter(user=request.user)
+    return render(request, 'foods/log.html', { 'foods': foods, 'meals': meals, 'profile': profile })
 
 
 @login_required
@@ -105,7 +106,7 @@ def assoc_food(request,  meal_id, food_id):
 def disassoc_food(request, meal_id, food_id):
     Meal.objects.get(id=meal_id).foods.remove(food_id)
     return redirect('meal_details', meal_id=meal_id)
-    
+
 
 def signup(request):
     error_message = ''

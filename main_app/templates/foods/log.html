@@ -52,18 +52,9 @@
         <h1>Total Macros</h1>
         <div class='total-table'>
             <table>
-                <thead>
-                    <tr>
-                        <th>Calories</th>
-                        <th>Protein</th>
-                        <th>Carbs</th>
-                        <th>Fat</th>
-                        <th>Sugar</th>
-                        <th>Sodium</th>
-                    </tr>
-                </thead>
                 <tbody>
                     <tr>
+                        <td>Total</td>
                         <td>total cals</td>
                         <td>total pro</td>
                         <td>total carbs</td>
@@ -71,7 +62,48 @@
                         <td>total sugar</td>
                         <td>total sodium</td>
                     </tr>
+                    {% if user.profile.weight > user.profile.goal_weight %}
+                    <tr>
+                        <td>Goal</td>
+                        <td>2075 cals</td>
+                        <td>49 g</td>
+                        <td>175 g</td>
+                        <td>43 g</td>
+                        <td>27 g</td>
+                        <td>1480 mg</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td>Goal</td>
+                        <td>2990 cals</td>
+                        <td>72 g</td>
+                        <td>190 g</td>
+                        <td>49 g</td>
+                        <td>27 g</td>
+                        <td>1480 mg</td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <td>Remaining</td>
+                        <td>Remaining cals</td>
+                        <td>Remaining pro</td>
+                        <td>Remaining carbs</td>
+                        <td>Remaining fat</td>
+                        <td>Remaining sugar</td>
+                        <td>Remaining sodium</td>
+                    </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td>Calories</td>
+                        <td>Protein</td>
+                        <td>Carbs</td>
+                        <td>Fat</td>
+                        <td>Sugar</td>
+                        <td>Sodium</td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
