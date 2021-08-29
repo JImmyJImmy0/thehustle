@@ -1,5 +1,6 @@
 from os import error
 from django.db.models import query
+from django.db.models.aggregates import Sum
 from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView, DeleteView
 from django.contrib.auth.views import LoginView
@@ -35,6 +36,7 @@ def food_log(request):
     foods = Food.objects.filter(user=request.user)
     meals = Meal.objects.filter(user=request.user)
     profile = Profile.objects.filter(user=request.user)
+    # total_calories = Sum([foods.calories for foods in meals.food.all])
     return render(request, 'foods/log.html', { 'foods': foods, 'meals': meals, 'profile': profile })
 
 
@@ -53,8 +55,9 @@ def exercise_log(request):
 @login_required
 def meal_details(request, meal_id):
     meal = Meal.objects.get(id=meal_id)
+    profile = Profile.objects.filter(user=request.user)
     unadded_foods = Food.objects.exclude(id__in = meal.foods.all().values_list('id'))
-    return render(request, 'meals/meal_details.html', {'meal': meal, 'foods': unadded_foods})
+    return render(request, 'meals/meal_details.html', {'meal': meal, 'foods': unadded_foods, 'profile': profile })
 
 
 class MealCreate(LoginRequiredMixin, CreateView):

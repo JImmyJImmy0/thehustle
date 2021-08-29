@@ -81,6 +81,7 @@
         <table class='macro-totals'>
             <thead>
                 <tr>
+                    <th></th>
                     <th>Calories</th>
                     <th>Protein</th>
                     <th>Carbs</th>
@@ -91,6 +92,7 @@
             </thead>
             <tbody>
                 <tr>
+                    <td>Total</td>
                     <td>{{ meal.get_total_calories }}cals</td>
                     <td>{{ meal.get_total_protein }}g</td>
                     <td>{{ meal.get_total_carbs }}g</td>
@@ -98,6 +100,27 @@
                     <td>{{ meal.get_total_sugar }}g</td>
                     <td>{{ meal.get_total_sodium }}mg</td>
                 </tr>
+                {% if user.profile.weight > user.profile.goal_weight %}
+                <tr>
+                    <td>Goal</td>
+                    <td>2075 cals</td>
+                    <td>49 g</td>
+                    <td>175 g</td>
+                    <td>43 g</td>
+                    <td>27 g</td>
+                    <td>1480 mg</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td>Goal</td>
+                    <td>2990 cals</td>
+                    <td>72 g</td>
+                    <td>190 g</td>
+                    <td>49 g</td>
+                    <td>27 g</td>
+                    <td>1480 mg</td>
+                </tr>
+                {% endif %}
             </tbody>
         </table>
     </div>
