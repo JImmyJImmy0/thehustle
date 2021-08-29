@@ -100,6 +100,13 @@ def assoc_food(request,  meal_id, food_id):
     Meal.objects.get(id=meal_id).foods.add(food_id)
     return redirect('meal_details', meal_id=meal_id)
 
+
+@login_required
+def disassoc_food(request, meal_id, food_id):
+    Meal.objects.get(id=meal_id).foods.remove(food_id)
+    return redirect('meal_details', meal_id=meal_id)
+    
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':

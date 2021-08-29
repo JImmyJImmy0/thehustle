@@ -43,6 +43,12 @@
                         </tbody>
                     </table>
                 </div>
+                <div class='remove-food'>
+                    <form action="{% url 'disassoc_food' meal.id food.id %}" method='post'>
+                        {% csrf_token %}
+                        <button type='submit'>Remove from meal</button>
+                    </form>
+                </div>
             {% endfor %}
         {% else %}
             <p>No foods have been added yet</p>

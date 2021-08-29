@@ -17,5 +17,6 @@ urlpatterns = [
     path('profile/update/', views.updateprofile, name='updateprofile'),
     path('meal/create', views.MealCreate.as_view(), name='meal_create'),
     path('meal/<int:meal_id>/', views.meal_details, name='meal_details'),
-    path('meal/<int:meal_id>/assoc_food/<int:food_id>', views.assoc_food, name='assoc_food')
+    path('meal/<int:meal_id>/assoc_food/<int:food_id>', views.assoc_food, name='assoc_food'),
+    path('meal/<int:meal_id>/disassoc_food/<int:food_id>', views.disassoc_food, name='disassoc_food')
 ]
