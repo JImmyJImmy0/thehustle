@@ -1,0 +1,25 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: rgb(36, 116, 248) solid 2px;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+label {
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+.submit-btn {
+    margin-top: 20px;
+}
