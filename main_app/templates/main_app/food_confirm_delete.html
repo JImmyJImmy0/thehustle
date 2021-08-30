@@ -10,12 +10,15 @@
 <div class='page-header'>
     <h1>Delete Food?</h1>
 </div>
-<h2>Are you sure you want to delete {{ object.name }}?</h2>
 
-<form action="" method="POST" class='delete-form'>
-    {% csrf_token %}
-    <a href="{% url 'foods_index' %}" class='cancel-btn'>Cancel</a>
-    <button type='submit' class='delete-btn'>Yes - Delete</button>
-</form>
+<div class="delete-container">
+    <h2>Are you sure you want to delete {{ object.name }}?</h2>
+
+    <form action="" method="POST" class='delete-form'>
+        {% csrf_token %}
+        <a href="{% url 'foods_index' %}" class='cancel-btn'>Cancel</a>
+        <button type='submit' class='delete-btn'>Yes - Delete</button>
+    </form>
+</div>
 
 {% endblock %}
