@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(40, 42, 54);
+}
+
+.header {
+    text-align: center;
+    color: rgb(104, 197, 248);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info {
+    background-color: rgb(104, 197, 248);
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+h3 {
+    margin: 5px;
+}
