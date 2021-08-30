@@ -1,13 +1,46 @@
-.page-header {
+body {
+    background-color: rgb(40, 42, 54);
+}
+
+main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-header{
+    color: rgb(104, 197, 248);
 }
 
 .form-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    justify-self: center;
+    width: 30vw;
+    height: 35vh;
+    background-color: rgb(104, 197, 248);
+    border-radius: 5px;
 }
 
 th {
     text-align: left;
+}
+
+label {
+    font-size: 20px;
+}
+
+.submit-btn {
+    margin-top: 10px;
+    width: 60px;
+    height: 30px;
+    background-color: rgb(40, 42, 54);
+    color: rgb(104, 197, 248);
+    border-radius: 5px;
+}
+
+.submit-btn:hover {
+    background-color: #1BED38;
+    color: rgb(40, 42, 54);
 }
