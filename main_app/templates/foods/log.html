@@ -6,108 +6,50 @@
 {% endblock %}
 
 {% block content %}
-
-<section class='meals-container'>
-    <h1>Your Meals</h1>
-
+<h1 class='title'>Your Meals</h1>
+<div class="container">
     <div class='breakfast'>
         <h1>Breakfast</h1>
-        <a href=""></a>
         <h3>Add a new breakfast meal</h3>
-        <a href="{% url 'meal_create' %}">Add</a>
-        <div>
+        <a href="{% url 'meal_create' %}" class='add-meal-btn'>Add</a>
+        <div class='meal-list'>
             {% for meal in meals %}
                 {% if meal.name == 'B' %}
                     <h1>{{ meal.get_name_display }} on {{ meal.date }}</h1>
-                    <a href="{% url 'meal_details' meal.id %}">View</a>
+                    <a href="{% url 'meal_details' meal.id %}" class='meal-deets'>View</a>
+                    <hr>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
     <div class='lunch'>
         <h1>Lunch</h1>
-        <a href="{% url 'meal_create' %}">Add</a>
-        <div>
+        <h3>Add a new lunch meal</h3>
+        <a href="{% url 'meal_create' %}" class='add-meal-btn'>Add</a>
+        <div class='meal-list'>
             {% for meal in meals %}
                 {% if meal.name == 'L' %}
                     <h1>{{ meal.get_name_display }} on {{ meal.date }}</h1>
-                    <a href="{% url 'meal_details' meal.id %}">View</a>
+                    <a href="{% url 'meal_details' meal.id %}" class='meal-deets'>View</a>
+                    <hr>
                 {% endif %}
             {% endfor %}
         </div>           
     </div>
     <div class='dinner'>
         <h1>Dinner</h1>
-        <a href="{% url 'meal_create' %}">Add</a>
-        <div>
+        <h3>Add a new dinner meal</h3>
+        <a href="{% url 'meal_create' %}" class='add-meal-btn'>Add</a>
+        <div class='meal-list'>
             {% for meal in meals %}
                 {% if meal.name == 'D' %}
                     <h1>{{ meal.get_name_display }} on {{ meal.date }}</h1>
-                    <a href="{% url 'meal_details' meal.id %}">View</a>
+                    <a href="{% url 'meal_details' meal.id %}" class='meal-deets'>View</a>
+                    <hr>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
- 
-    <div class='macro-total'>
-        <h1>Total Macros</h1>
-        <div class='total-table'>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Total</td>
-                        <td>total cals</td>
-                        <td>total pro</td>
-                        <td>total carbs</td>
-                        <td>total fat</td>
-                        <td>total sugar</td>
-                        <td>total sodium</td>
-                    </tr>
-                    {% if user.profile.weight > user.profile.goal_weight %}
-                    <tr>
-                        <td>Goal</td>
-                        <td>2075 cals</td>
-                        <td>49 g</td>
-                        <td>175 g</td>
-                        <td>43 g</td>
-                        <td>27 g</td>
-                        <td>1480 mg</td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td>Goal</td>
-                        <td>2990 cals</td>
-                        <td>72 g</td>
-                        <td>190 g</td>
-                        <td>49 g</td>
-                        <td>27 g</td>
-                        <td>1480 mg</td>
-                    </tr>
-                    {% endif %}
-                    <tr>
-                        <td>Remaining</td>
-                        <td>Remaining cals</td>
-                        <td>Remaining pro</td>
-                        <td>Remaining carbs</td>
-                        <td>Remaining fat</td>
-                        <td>Remaining sugar</td>
-                        <td>Remaining sodium</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td></td>
-                        <td>Calories</td>
-                        <td>Protein</td>
-                        <td>Carbs</td>
-                        <td>Fat</td>
-                        <td>Sugar</td>
-                        <td>Sodium</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
-</section>
+</div>
 
 {% endblock %}
