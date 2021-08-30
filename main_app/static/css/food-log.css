@@ -72,6 +72,7 @@ h3 {
 
 .add-meal-btn:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .meal-deets {
@@ -89,6 +90,7 @@ h3 {
 
 .meal-deets:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 hr {

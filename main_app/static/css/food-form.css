@@ -43,4 +43,5 @@ label {
 .submit-btn:hover {
     background-color: #1BED38;
     color: rgb(40, 42, 54);
+    cursor: pointer;
 }

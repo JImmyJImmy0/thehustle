@@ -12,118 +12,123 @@
     <h1>{{ meal.get_name_display }} on {{ meal.date }}</h1>
 </div>
 
-<section>
-    <h2>food</h2>
-    <div>
-        {% if meal.foods.count %}
-            {% for food in meal.foods.all %}
-                <div class='table-container'>
-                    <table class='food-table'>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Calories</th>
-                                <th>Protein</th>
-                                <th>Carbs</th>
-                                <th>Fat</th>
-                                <th>Sugar</th>
-                                <th>Sodium</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ food.name }}</td>
-                                <td>{{ food.calories }}cals</td>
-                                <td>{{ food.protein }}g</td>
-                                <td>{{ food.carbs }}g</td>
-                                <td>{{ food.fat }}g</td>
-                                <td>{{ food.sugar }}g</td>
-                                <td>{{ food.sodium }}mg</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class='remove-food'>
-                    <form action="{% url 'disassoc_food' meal.id food.id %}" method='post'>
-                        {% csrf_token %}
-                        <button type='submit'>Remove from meal</button>
-                    </form>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>No foods have been added yet</p>
-        {% endif %}
-    </div>
-</section>
+<div class="main-content">
+    <section class='left'>
+        <div class='food-list'>
+            <h1>Foods in Meal</h1>
+            {% if meal.foods.count %}
+                {% for food in meal.foods.all %}
+                    <div class='table-container'>
+                        <table class='food-table'>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Calories</th>
+                                    <th>Protein</th>
+                                    <th>Carbs</th>
+                                    <th>Fat</th>
+                                    <th>Sugar</th>
+                                    <th>Sodium</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ food.name }}</td>
+                                    <td>{{ food.calories }}cals</td>
+                                    <td>{{ food.protein }}g</td>
+                                    <td>{{ food.carbs }}g</td>
+                                    <td>{{ food.fat }}g</td>
+                                    <td>{{ food.sugar }}g</td>
+                                    <td>{{ food.sodium }}mg</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class='remove-food'>
+                        <form action="{% url 'disassoc_food' meal.id food.id %}" method='post'>
+                            {% csrf_token %}
+                            <button type='submit' class='remove'>Remove from meal</button>
+                        </form>
+                    </div>
+                    <hr class='meal-sep'>
+                {% endfor %}
+            {% else %}
+                <p>No foods have been added yet</p>
+            {% endif %}
+        </div>
+        
+        <div class="macro-table">
+            <h2>Total Macros For This Meal</h2>
+            <div class='macro-container'>
+                <table class='macro-totals'>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Calories</th>
+                            <th>Protein</th>
+                            <th>Carbs</th>
+                            <th>Fat</th>
+                            <th>Sugar</th>
+                            <th>Sodium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td>{{ meal.get_total_calories }}cals</td>
+                            <td>{{ meal.get_total_protein }}g</td>
+                            <td>{{ meal.get_total_carbs }}g</td>
+                            <td>{{ meal.get_total_fat }}g</td>
+                            <td>{{ meal.get_total_sugar }}g</td>
+                            <td>{{ meal.get_total_sodium }}mg</td>
+                        </tr>
+                        {% if user.profile.weight > user.profile.goal_weight %}
+                        <tr>
+                            <td><strong>Goal</strong></td>
+                            <td>2075 cals</td>
+                            <td>49 g</td>
+                            <td>175 g</td>
+                            <td>43 g</td>
+                            <td>27 g</td>
+                            <td>1480 mg</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>Goal</td>
+                            <td>2990 cals</td>
+                            <td>72 g</td>
+                            <td>190 g</td>
+                            <td>49 g</td>
+                            <td>27 g</td>
+                            <td>1480 mg</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <div>
-        <h1>All foods</h1>
-        {% if foods.count %}
-            {% for food in foods.all %}
-                <div>
-                    <p>{{ food.name }}</p>
-                    <form action="{% url 'assoc_food' meal.id food.id %}" method='post'>
-                        {% csrf_token %}
-                        <button type='submit'>Add to meal</button>
-                    </form>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>All foods added</p>
-        {% endif %}
-    </div>
-</section>
+    <section class='right'>
+        <div class='all-foods'>
+            <h1>All foods</h1>
+            {% if foods.count %}
+                {% for food in foods.all %}
+                    <div class='food'>
+                        <p class='food-name'>{{ food.name }}</p>
+                        <form action="{% url 'assoc_food' meal.id food.id %}" method='post'>
+                            {% csrf_token %}
+                            <button type='submit' class='add-food-btn'>Add to meal</button>
+                        </form>
+                    </div>
+                    <hr class="food-sep">
+                {% endfor %}
+            {% else %}
+                <p>All foods added</p>
+            {% endif %}
+        </div>
+    </section>
 
-<section>
-    <h2>Total Macros For This Meal</h2>
-    <div class='macro-container'>
-        <table class='macro-totals'>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Calories</th>
-                    <th>Protein</th>
-                    <th>Carbs</th>
-                    <th>Fat</th>
-                    <th>Sugar</th>
-                    <th>Sodium</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Total</td>
-                    <td>{{ meal.get_total_calories }}cals</td>
-                    <td>{{ meal.get_total_protein }}g</td>
-                    <td>{{ meal.get_total_carbs }}g</td>
-                    <td>{{ meal.get_total_fat }}g</td>
-                    <td>{{ meal.get_total_sugar }}g</td>
-                    <td>{{ meal.get_total_sodium }}mg</td>
-                </tr>
-                {% if user.profile.weight > user.profile.goal_weight %}
-                <tr>
-                    <td>Goal</td>
-                    <td>2075 cals</td>
-                    <td>49 g</td>
-                    <td>175 g</td>
-                    <td>43 g</td>
-                    <td>27 g</td>
-                    <td>1480 mg</td>
-                </tr>
-                {% else %}
-                <tr>
-                    <td>Goal</td>
-                    <td>2990 cals</td>
-                    <td>72 g</td>
-                    <td>190 g</td>
-                    <td>49 g</td>
-                    <td>27 g</td>
-                    <td>1480 mg</td>
-                </tr>
-                {% endif %}
-            </tbody>
-        </table>
-    </div>
-</section>
+</div>
 
 {% endblock %}
