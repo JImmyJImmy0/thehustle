@@ -14,20 +14,20 @@
 <body>
     <header>
         <div class='home-link'>
-            <a href="/">Home</a>
+            <a href="/" class='btn'>Home</a>
         </div>
         <nav>
             <ul>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'foods_index' %}">Food</a></li>
-                    <li><a href="{% url 'food_log' %}">Food Log</a></li>
+                    <li><a href="{% url 'foods_index' %}" class='btn'>Food</a></li>
+                    <li><a href="{% url 'food_log' %}" class='btn'>Food Log</a></li>
                     {% comment %} <li><a href="{% url 'exercises_index' %}">Exercise</a></li>
                     <li><a href="{% url 'exercise_log' %}">Exercise Log</a></li> {% endcomment %}
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
-                    <li><a href="{% url 'logout' %}">Log out</a></li>
+                    <li><a href="{% url 'profile' %}" class='btn'>Profile</a></li>
+                    <li><a href="{% url 'logout' %}" class='btn'>Log out</a></li>
                     {% else %}
-                    <li><a href="{% url 'home' %}">Login</a></li>
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'home' %}" class='btn'>Login</a></li>
+                    <li><a href="{% url 'signup' %}" class='btn'>Sign Up</a></li>
                 {% endif %}
             </ul>
         </nav>

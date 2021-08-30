@@ -37,6 +37,25 @@ body {
     font-weight: 600;
   } */
 
+  .btn {
+    font-size: 1.1rem;
+    padding: .4rem .8rem;
+    border-radius: 6px;
+    border-width: 2px;
+    border-style: solid;
+    text-decoration: none;
+    background-color: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    margin-right: 10px;
+  }
+
+  .btn:hover {
+    background-color: rgb(40, 42, 54);
+    color: white;
+  }
+
   nav ul {
     display: flex;
     align-items: center;
@@ -50,6 +69,7 @@ body {
 
   .home-link {
     margin: auto;
+    margin-bottom: 5px;
     padding: 10px 10px;
     align-self: center;
     text-align: center;
