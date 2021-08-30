@@ -1,4 +1,5 @@
 from os import error
+from django.contrib.auth.models import User
 from django.db.models import query
 from django.db.models.aggregates import Sum
 from django.shortcuts import redirect, render
@@ -132,8 +133,9 @@ def createprofile(request):
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST)
         if profile_form.is_valid():
-            user_profile = profile_form.save()
-            Profile(user_id = user_profile.id).save()
+            user_profile = profile_form.save(commit = False)
+            user_profile.user_id = request.user.id
+            user_profile.save()
             return redirect('foods_index')
         else:
             error_message = 'Invalid - try again'
