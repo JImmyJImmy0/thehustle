@@ -1,17 +1,34 @@
+body {
+    background-color: rgb(40, 42, 54);
+}
+
 main {
     display: flex;
     flex-direction: row;
 }
 
+h1 {
+    font-size: 46px;
+    color: rgb(104, 197, 248);
+}
+
+.title {
+    margin-bottom: 30px; 
+}
+
 h3 {
+    color: rgb(104, 197, 248);
+    margin-top: 5px;
     margin-bottom: 5px;
+    font-size: 28px;
 }
 
 .food-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 50vw;
     height: 100vh;
-    text-align: center;
-    
 }
 
 .all-foods {
@@ -30,11 +47,70 @@ h3 {
     align-items: center;
 }
 
+.add-food-btn {
+    color: rgb(104, 197, 248);
+}
+
 th, td {
     padding: 3px;
+    color: rgb(104, 197, 248);
+}
+
+th {
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+    padding: 10px;
+}
+
+th:last-child {
+    border-right: none;
+}
+
+td {
+    border-right: 2px solid white;
+}
+
+td:last-child {
+    border-right: none;
 }
 
 .delete-btn {
-    margin-top: 5px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: rgb(104, 197, 248);
+    background-color: white;
+    width: 70px;
+    height: 28px;
+    border-radius: 5px;
+    border: 2px solid rgb(36, 116, 248);
+    text-decoration: none;
+}
+
+.delete-btn:hover {
+    background-color: tomato;
+    color: rgb(40, 42, 54);
+}
+
+.add-food-btn {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 36px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(104, 197, 248);
+    color: rgb(40, 42, 54);
+    width: 200px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.add-food-btn:hover {
+    background-color: rgb(36, 116, 248);
+}
+
+hr {
+    width: 60%;
 }
 

@@ -12,14 +12,14 @@
         <h1>Add a Food</h1>
     </div>
     <div class='add-food-btn'>
-        <a href="{% url 'foods_create' %}">Click to add a food</a>
+        <a href="{% url 'foods_create' %}" class='add-food-btn'>Click to add a food</a>
     </div>
 </section>
 
 
 <section class='all-foods'>
     <div class='food-container'>
-        <h1>Your Foods</h1>
+        <h1 class='title'>Your Foods</h1>
         <div class='foods-list'>
             {% for food in foods %}
                 <div class='test'>
@@ -47,6 +47,7 @@
                         </tbody>
                     </table>
                     <a href="{% url 'foods_delete' food.id %}" class='delete-btn'>Delete</a>
+                    <hr>
                 </div>
             {% endfor %}
         </div>
